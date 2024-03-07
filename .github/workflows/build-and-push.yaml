@@ -1,4 +1,4 @@
-name: ci
+name: Build and Push to DockerHub
 
 on:
   push:
@@ -9,6 +9,15 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      -
+        name: Checkout markdown repo
+        uses: actions/checkout@v3
+        with:
+          repository: jdev9487/blog-markdown
+          path: ./maths
+      -
+        name: Display markdown repo info
+        run: bash ./.github/scripts/test.sh
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
