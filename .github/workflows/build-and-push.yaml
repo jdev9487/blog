@@ -18,7 +18,6 @@ jobs:
           path: ./blog-markdown
       -
         name: Display markdown repo info
-        run: echo ${{ github.workspace }}
         run: cp ./blog-markdown/maths/quadratic-formula.md ${{ github.workspace }}/content/blog/quadratic-formula.md
       -
         name: Set up QEMU
