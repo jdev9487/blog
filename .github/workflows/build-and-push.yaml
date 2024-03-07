@@ -19,7 +19,7 @@ jobs:
       -
         name: Display markdown repo info
         run: echo ${{ github.workspace }}
-        # run: cp ./blog-markdown/maths/quadratic-formula.md ./content/blog/quadratic-formula.md
+        run: cp ./blog-markdown/maths/quadratic-formula.md ${{ github.workspace }}/content/blog/quadratic-formula.md
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
