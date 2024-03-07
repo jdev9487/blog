@@ -18,7 +18,7 @@ jobs:
           path: ./blog-markdown
       -
         name: Display markdown repo info
-        run: bash ls
+        run: ls
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
