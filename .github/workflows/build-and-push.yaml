@@ -31,11 +31,9 @@ jobs:
         with:
           name: test-artifact
           # path: ./blog-markdown/maths/quadratic-formula.md
-      # -
-      #   name: Display markdown repo info
-      #   # run: cp ./blog-markdown/maths/quadratic-formula.md ${{ github.workspace }}/content/blog/quadratic-formula.md
-      #   # run: ls /home/runner/work
-      #   run: ls && pwd && ls blog-markdown
+      -
+        name: Display markdown repo info
+        run: ls && pwd && ls blog-markdown
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
