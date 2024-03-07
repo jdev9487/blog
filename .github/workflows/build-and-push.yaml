@@ -31,9 +31,6 @@ jobs:
         with:
           name: test-artifact
           path: ./content/blog/quadratic-formula/index.md
-      # -
-      #   name: Display markdown repo info
-      #   run: ls && pwd && ls blog-markdown
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -51,4 +48,5 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
+          platforms: linux/arm64
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog:latest
