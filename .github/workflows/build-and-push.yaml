@@ -30,10 +30,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: test-artifact
-          # path: ./blog-markdown/maths/quadratic-formula.md
-      -
-        name: Display markdown repo info
-        run: ls && pwd && ls blog-markdown
+          path: ./content/blog/quadratic-formula/index.md
+      # -
+      #   name: Display markdown repo info
+      #   run: ls && pwd && ls blog-markdown
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
