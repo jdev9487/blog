@@ -18,7 +18,7 @@ jobs:
           path: ./blog-markdown
       -
         name: Display markdown repo info
-        run: ls blog-markdown
+        run: cp ./blog-markdown/maths/quadratic-formula.md ./content/blog
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
