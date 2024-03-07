@@ -11,10 +11,11 @@ jobs:
     steps:
       -
         name: Checkout markdown repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: jdev9487/blog-markdown
-          path: ./maths
+          token: ${{ secrets.MARKDOWN_PAT }}
+          path: ./blog-markdown
       -
         name: Display markdown repo info
         run: bash ./.github/scripts/test.sh
