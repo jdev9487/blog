@@ -46,10 +46,10 @@ jobs:
       -
         name: Move artifacts
         run: mkdir ./content/blog/quadratic-formula && mv ./artifacts/quadratic-formula.md ./content/blog/quadratic-formula/index.md
-      # -
-      #   name: Build and push
-      #   uses: docker/build-push-action@v5
-      #   with:
-      #     context: .
-      #     push: true
-      #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog:latest
+      -
+        name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog:latest
