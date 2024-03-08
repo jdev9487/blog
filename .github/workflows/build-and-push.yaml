@@ -42,7 +42,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: test-artifact
-          path: ./content/blog/quadratic-formula/index.md
+          path: ./content/blog/quadratic-formula/
       -
         name: Build and push
         uses: docker/build-push-action@v5
