@@ -48,7 +48,7 @@ jobs:
         run: rm -rf ./content/blog/
       -
         name: Move artifacts
-        run: mkdir ./content/blog/quadratic-formula && mv ./artifacts/index.md ./content/blog/quadratic-formula/index.md
+        run: mkdir -p ./content/blog/quadratic-formula && mv ./artifacts/index.md ./content/blog/quadratic-formula/index.md
       -
         name: Build and push
         uses: docker/build-push-action@v5
