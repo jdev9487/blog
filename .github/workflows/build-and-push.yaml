@@ -45,7 +45,7 @@ jobs:
           path: ./test
       -
         name: check the stuffff
-        run: ls ./test
+        run: ls ./test/quadratic-formula.md
       -
         name: Build and push
         uses: docker/build-push-action@v5
