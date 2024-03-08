@@ -42,14 +42,14 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: blog-markdowns
-          path: ./test
+          path: ./artifacts
       -
-        name: check the stuffff
-        run: ls -R ./test
-      # -
-      #   name: Build and push
-      #   uses: docker/build-push-action@v5
-      #   with:
-      #     context: .
-      #     push: true
-      #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog:latest
+        name: Move artifacts
+        run: mv ./artifacts/quadratic-formula.md ./content/blog/quadratic-formula/index.md
+      -
+        name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog:latest
