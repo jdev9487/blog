@@ -21,7 +21,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: blog-markdowns
-          path: ./blog-markdown/maths/quadratic-formula.md
+          path: ./blog-markdown/maths/quadratic-formula/index.md
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -45,7 +45,7 @@ jobs:
           path: ./artifacts
       -
         name: Move artifacts
-        run: mkdir ./content/blog/quadratic-formula && mv ./artifacts/quadratic-formula.md ./content/blog/quadratic-formula/index.md
+        run: mkdir ./content/blog/quadratic-formula && mv ./artifacts/index.md ./content/blog/quadratic-formula/index.md
       -
         name: Build and push
         uses: docker/build-push-action@v5
