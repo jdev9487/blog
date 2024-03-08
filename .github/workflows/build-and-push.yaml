@@ -42,10 +42,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: blog-markdowns
-          path: /test
+          path: ./test
       -
         name: check the stuffff
-        run: ls -R /test
+        run: ls -R ./test
       # -
       #   name: Build and push
       #   uses: docker/build-push-action@v5
