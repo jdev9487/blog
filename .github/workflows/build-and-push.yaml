@@ -44,6 +44,9 @@ jobs:
           name: test-artifact
           path: ./content/blog/quadratic-formula/
       -
+        name: check the stuffff
+        run: ls ./content/blog/quadratic-formula
+      -
         name: Build and push
         uses: docker/build-push-action@v5
         with:
