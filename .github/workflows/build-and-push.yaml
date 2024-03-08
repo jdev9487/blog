@@ -6,7 +6,7 @@ on:
       - 'main'
 
 jobs:
-  docker:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       -
@@ -43,6 +43,9 @@ jobs:
         with:
           name: blog-markdowns
           path: ./artifacts
+      -
+        name: Delete dummy blogs
+        run: rm -rf ./content/blog/
       -
         name: Move artifacts
         run: mkdir ./content/blog/quadratic-formula && mv ./artifacts/index.md ./content/blog/quadratic-formula/index.md
