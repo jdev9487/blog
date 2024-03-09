@@ -62,6 +62,10 @@
 
 /* HTML elements */
 
+img {
+  width: 100%
+}
+
 *,
 :after,
 :before {
