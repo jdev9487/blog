@@ -56,3 +56,14 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog:latest
+      -
+        name: Download test
+        uses: robinraju/release-downloader@v1.9
+        with:
+          repository: jdev9487/math-blog-animations
+          latest: true
+          filename: "*.gif"
+          out-file-path: "animations"
+      -
+        name: List animations downloaded
+        run: ls
