@@ -48,7 +48,7 @@ jobs:
         run: rm -rf ./content/blog/
       -
         name: Move artifacts
-        run: sh ./github/scripts/copy-markdown-files.sh
+        run: sh .github/scripts/copy-markdown-files.sh
       -
         name: Build and push
         uses: docker/build-push-action@v5
