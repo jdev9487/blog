@@ -1,12 +1,9 @@
 for path in ./content/blog/**/*.md
 do
-    fullfilename=$(basename -- "$path")
-    filename="${fullfilename%.*}"
-    echo "-------------"
-    echo $path
+    parent_dir="$(dirname -- "$(realpath -- path)")"
     grep -E -o "\w+\.gif" $path | while read -r file
     do
-        echo "${file} - ${filename}/${file}"
-        cp ./animations/$file ./content/blog/$filename/$file
+        echo "cp ./animations/$file ./content/blog/$parent_dir/$file"
+        cp ./animations/$file ./content/blog/$parent_dir/$file
     done
 done
