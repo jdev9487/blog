@@ -50,14 +50,7 @@ jobs:
         name: Move artifacts
         run: sh .github/scripts/copy-markdown-files.sh
       -
-        name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog:latest
-      -
-        name: Download test
+        name: Download animations
         uses: robinraju/release-downloader@v1.9
         with:
           repository: jdev9487/math-blog-animations
@@ -65,5 +58,12 @@ jobs:
           filename: "*.gif"
           out-file-path: "animations"
       -
-        name: List animations downloaded
-        run: ls
+        name: Copy animations
+        run: sh .github/scripts/copy-animations.sh
+      -
+        name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog:latest
