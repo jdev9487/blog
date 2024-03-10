@@ -6,6 +6,6 @@ description: "A derivation of the quadratic formula using the 'completing the sq
 
 This is really easy
 
-![Shrek](./completingTheSquare.gif)
+![Tag](./completingTheSquare.gif)
 
 Done.
