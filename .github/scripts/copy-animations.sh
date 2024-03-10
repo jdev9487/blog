@@ -2,7 +2,7 @@ for path in ./content/blog/**/*.md
 do
     fullfilename=$(basename -- "$path")
     filename="${fullfilename%.*}"
-    for file in grep -o *.gif index.md
+    grep -o *.gif $path | while read -r file
     do
         cp ./animations/$file ./content/blog/$filename/$file
     done
