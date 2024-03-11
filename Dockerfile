@@ -9,6 +9,12 @@ RUN yarn install && yarn build
 
 FROM nginx:alpine
 
+WORKDIR /etc/nginx/conf.d
+
+RUN rm -f default.conf
+
+COPY .nginx/default.conf default.conf
+
 WORKDIR /usr/share/nginx/html
 
 RUN rm -rf ./*
