@@ -21,6 +21,6 @@ RUN rm -rf ./*
 
 COPY --from=builder /app/public .
 
-EXPOSE 443
+EXPOSE 443 80
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
