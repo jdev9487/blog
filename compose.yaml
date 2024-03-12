@@ -3,6 +3,7 @@ services:
     image: jdev9487/blog:latest
     ports:
       - "443:443"
+      - "80:80"
     volumes:
       - /etc/ssl/site:/etc/ssl:ro
       - /default.conf:/etc/nginx/conf.d/default.conf:ro
