@@ -13,7 +13,7 @@ WORKDIR /etc/nginx/conf.d
 
 RUN rm -f default.conf
 
-COPY .nginx/default.conf default.conf
+# COPY .nginx/default.conf default.conf
 
 WORKDIR /usr/share/nginx/html
 
