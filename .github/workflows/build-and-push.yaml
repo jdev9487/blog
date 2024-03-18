@@ -1,9 +1,14 @@
 name: Build and Push to DockerHub
 
+# on:
+#   push:
+#     tags::
+#     - '*'
 on:
   push:
-    tags::
-    - '*'
+    branches:
+      - main
+
 
 jobs:
   deploy:
@@ -49,6 +54,9 @@ jobs:
       -
         name: Copy animations
         run: sh .github/scripts/copy-animations.sh
+      -
+        name: LIIIIIIIIIIIIST
+        run: ls
       -
         name: Build and push
         uses: docker/build-push-action@v5

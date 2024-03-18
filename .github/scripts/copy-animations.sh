@@ -3,7 +3,7 @@ do
     echo $path
     parent_dir="$(dirname -- "$(realpath -- $path)")"
     echo $parent_dir
-    grep -E -o "\w+\.gif" $path | while read -r file
+    grep -E -o "\w+\.mp4" $path | while read -r file
     do
         echo "cp ./animations/$file $parent_dir/$file"
         cp ./animations/$file $parent_dir/$file
