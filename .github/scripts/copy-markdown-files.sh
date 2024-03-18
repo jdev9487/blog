@@ -1,7 +1,7 @@
-for path in ./artifacts/**
+for path in ./markdown/*
 do
     fullfilename=$(basename -- "$path")
     filename="${fullfilename%.*}"
     mkdir -p ./content/blog/$filename
-    cp $path/index.md ./content/blog/$filename/index.md
+    cp $path ./content/blog/$filename/index.md
 done

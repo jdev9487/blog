@@ -10,19 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
-        name: Checkout markdown repo
-        uses: actions/checkout@v4
-        with:
-          repository: jdev9487/blog-markdown
-          token: ${{ secrets.MARKDOWN_PAT }}
-          path: ./blog-markdown
-      -
-        name: Create artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: blog-markdowns
-          path: ./blog-markdown
-      -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       -
@@ -38,11 +25,13 @@ jobs:
         name: Checkout
         uses: actions/checkout@v4
       -
-        name: Download artifact
-        uses: actions/download-artifact@v4
+        name: Download markdown
+        uses: robinraju/release-downloader@v1.9
         with:
-          name: blog-markdowns
-          path: ./artifacts
+          repository: jdev9487/blog-markdown
+          latest: true
+          filename: "*.md"
+          out-file-path: "markdown"
       -
         name: Delete dummy blogs
         run: rm -rf ./content/blog/
@@ -55,7 +44,7 @@ jobs:
         with:
           repository: jdev9487/math-blog-animations
           latest: true
-          filename: "*.gif"
+          filename: "*.mp4"
           out-file-path: "animations"
       -
         name: Copy animations
