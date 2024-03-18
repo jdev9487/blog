@@ -52,7 +52,7 @@ jobs:
         run: sh .github/scripts/copy-animations.sh
       -
         name: LIIIIIIIIIIIIST
-        run: ls
+        run: ls -R
       -
         name: Build and push
         uses: docker/build-push-action@v5
