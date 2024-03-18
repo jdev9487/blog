@@ -1,9 +1,5 @@
 name: Build and Push to DockerHub
 
-# on:
-#   push:
-#     tags::
-#     - '*'
 on:
   push:
     branches:
