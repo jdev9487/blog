@@ -2,10 +2,13 @@
 title: The Quadratic Formula
 date: "2024-03-08T11:49:00.000Z"
 description: "A derivation of the quadratic formula using the 'completing the square' method"
+featuredAnimation: "./Source.mp4"
 ---
 
 This is really easy
 
-![Tag](./completingTheSquare.gif)
+![](./image.png)
+
+![](./Source.png)
 
 Done.

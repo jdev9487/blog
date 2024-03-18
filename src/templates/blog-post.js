@@ -10,6 +10,7 @@ const BlogPostTemplate = ({
   location,
 }) => {
   const siteTitle = site.siteMetadata?.title || `Title`
+  console.log(post.frontmatter.featuredAnimation.publicURL);
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -22,6 +23,9 @@ const BlogPostTemplate = ({
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
         </header>
+        <video autoPlay loop width="100%">
+          <source src={post.frontmatter.featuredAnimation.publicURL} type="video/mp4" />
+        </video>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
@@ -91,6 +95,9 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        featuredAnimation {
+          publicURL
+        }
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
