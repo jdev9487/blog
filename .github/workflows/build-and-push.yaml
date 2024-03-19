@@ -1,9 +1,9 @@
 name: Build and Push to DockerHub
 
-on:
+on: 
   push:
-    branches:
-      - 'main'
+    tags:
+    - '*'
 
 
 jobs:
@@ -52,7 +52,7 @@ jobs:
         run: sh .github/scripts/copy-animations.sh
       -
         name: LIIIIIIIIIIIIST
-        run: ls -R
+        run: ls -R && cat ./content/blog/quadratic-formula/index.md
       -
         name: Build and push
         uses: docker/build-push-action@v5
