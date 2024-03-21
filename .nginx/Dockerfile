@@ -4,11 +4,9 @@ FROM nginx:latest
 RUN rm /etc/nginx/conf.d/* 
 
 # Copy config files
-COPY ./holder.conf /etc/nginx/conf.d/
-COPY ./convert-nginx.sh /etc/nginx/
-
-# giving execution permissions to convert-nginx.sh shell file. 
-RUN chmod +x /etc/nginx/convert-nginx.sh
+# COPY ./default.conf /etc/nginx/conf.d/
 
 # Expose the listening port
-EXPOSE 8080
+EXPOSE 443 80
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
