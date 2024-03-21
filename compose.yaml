@@ -1,18 +1,10 @@
-# services:
-#   app:
-#     image: blog:latest
-#     ports:
-#       - "80:80"
-#     volumes:
-#       - ~/dev/github/jdev9487/blog/default.conf:/etc/nginx/conf.d/default.conf:ro
-
 version: '3.8'
 services:
   blog-app:
-    # image: blog # Placeholder for pushing image to Dockerhub
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: jdev9487/blog:latest # Placeholder for pushing image to Dockerhub
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
   nginx:
     # image: csrinu236/medium-nginx-app # Placeholder for pushing image to Dockerhub
     build:
