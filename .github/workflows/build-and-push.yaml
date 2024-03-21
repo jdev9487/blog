@@ -23,7 +23,7 @@ jobs:
           out-file-path: "markdown"
       -
         name: Delete dummy blogs
-        run: rm -rf ./content/blog/
+        run: rm ./src/posts/*
       -
         name: Move artifacts
         run: sh .github/scripts/copy-markdown-files.sh

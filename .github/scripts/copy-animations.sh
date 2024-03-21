@@ -1,11 +1,5 @@
-for path in ./content/blog/**/*.md
+for path in ./animations/*
 do
-    echo $path
-    parent_dir="$(dirname -- "$(realpath -- $path)")"
-    echo $parent_dir
-    grep -E -o "\w+\.mp4" $path | while read -r file
-    do
-        echo "cp ./animations/$file $parent_dir/$file"
-        cp ./animations/$file $parent_dir/$file
-    done
+    fullfilename=$(basename -- "$path")
+    cp $path ./public/$fullfilename
 done
