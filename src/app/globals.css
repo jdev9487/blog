@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    h2 {
+        @apply text-3xl;
+    }
+
+    h3 {
+        @apply text-2xl;
+    }
+
+    h4 {
+        @apply text-xl;
+    }
+
+    h5 {
+        @apply text-lg;
+    }
+
+    h6 {
+        @apply text-lg;
+    }
+
+    h2, h3, h4, h5, h6 {
+        @apply text-secondary;
+        @apply mb-2;
+        @apply mt-4;
+        @apply border-b-2;
+        @apply border-b-secondary/20;
+    }
+    
+    p {
+        @apply mb-3;
+    }
+
+    ul {
+        @apply list-disc;
+    }
+
+    ol {
+        @apply list-decimal;
+    }
+
+    ul, ol {
+        @apply list-inside;
+        @apply mb-3;
+    }
+
+    blockquote {
+        @apply border-l-4;
+        @apply border-secondary;
+        @apply pl-4;
+    }
+
+    pre:has(code) {
+        @apply bg-code;
+        @apply rounded-md;
+        @apply p-4;
+        @apply mb-3;
+    }
+
+    mjx-container > svg {
+        @apply inline;
+    }
+}
