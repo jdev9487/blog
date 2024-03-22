@@ -6,7 +6,9 @@ import ShareIcon from '@mui/icons-material/Share';
 const PostPreview = (props: PostMetadata) => {
     return (
         <div className="flex flex-row border border-background-secondary shadow min-h-80">
-            <div className="bg-main basis-1/2"/>
+            <div className="flex basis-1/2">
+                <img className="object-cover" src={`${props.featuredAnimation}.png`} />
+            </div>
             <div className="flex flex-col basis-1/2 py-6 px-12">
                 <div className="flex flex-row items-center gap-2 pb-6 text-secondary">
                     <Avatar src={`${props.user}.png`} />
