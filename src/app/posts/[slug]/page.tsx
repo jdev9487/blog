@@ -44,7 +44,7 @@ const PostPage = async (props: any) => {
             <h1 className="text-secondary text-6xl text-center my-16">
                 {frontmatter.title}
             </h1>
-            <video autoPlay loop src={`/${frontmatter.featuredAnimation}`} />
+            <video autoPlay loop src={`/${frontmatter.featuredAnimation}.mp4`} />
             <div dangerouslySetInnerHTML={{ __html: remark.value }}/>
         </div>
     )
