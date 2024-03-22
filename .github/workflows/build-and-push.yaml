@@ -25,7 +25,7 @@ jobs:
         name: Delete dummy blogs
         run: rm ./src/posts/*
       -
-        name: Move artifacts
+        name: Copy markdown
         run: sh .github/scripts/copy-markdown-files.sh
       -
         name: Download animations
@@ -33,7 +33,7 @@ jobs:
         with:
           repository: jdev9487/math-blog-animations
           latest: true
-          filename: "*.mp4"
+          filename: "*"
           out-file-path: "animations"
       -
         name: Copy animations
