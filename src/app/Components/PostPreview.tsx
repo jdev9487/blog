@@ -9,7 +9,7 @@ const PostPreview = (props: PostMetadata) => {
             <div className="bg-main basis-1/2"/>
             <div className="flex flex-col basis-1/2 py-6 px-12">
                 <div className="flex flex-row items-center gap-2 pb-6 text-secondary">
-                    <Avatar />
+                    <Avatar src={`${props.user}.png`} />
                     <div>
                         <p className="text-xs font-thin mb-0">{props.user}</p>
                         <p className="text-xs font-thin mb-0">{props.date}</p>
