@@ -29,7 +29,7 @@ jobs:
         run: sh .github/scripts/copy-markdown-files.sh
       -
         name: Delete dummy avatars
-        run: rm ./public/avatars
+        run: rm ./public/avatars/*
       -
         name: Fetch user avatars
         run: sh .github/scripts/fetch-user-avatars.sh
