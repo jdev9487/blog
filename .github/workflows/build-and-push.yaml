@@ -28,6 +28,12 @@ jobs:
         name: Copy markdown
         run: sh .github/scripts/copy-markdown-files.sh
       -
+        name: Delete dummy avatars
+        run: rm ./public/avatars
+      -
+        name: Fetch user avatars
+        run: sh .github/scripts/fetch-user-avatars.sh
+      -
         name: Download animations
         uses: robinraju/release-downloader@v1.9
         with:
@@ -35,6 +41,9 @@ jobs:
           latest: true
           filename: "*"
           out-file-path: "animations"
+      -
+        name: Delete dummy animations
+        run: rm ./public/animations/*
       -
         name: Copy animations
         run: sh .github/scripts/copy-animations.sh

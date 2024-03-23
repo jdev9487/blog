@@ -1,15 +1,15 @@
 version: '3.8'
 services:
   blog-app:
-    image: jdev9487/blog:latest # Placeholder for pushing image to Dockerhub
+    image: jdev9487/blog:latest
     # build:
     #   context: .
     #   dockerfile: Dockerfile
   nginx:
-    # image: csrinu236/medium-nginx-app # Placeholder for pushing image to Dockerhub
-    build:
-      context: ./.nginx
-      dockerfile: Dockerfile
+    image: jdev9487/blog-proxy-server:latest
+    # build:
+    #   context: ./.nginx
+    #   dockerfile: Dockerfile
     depends_on:
       - blog-app
     ports:

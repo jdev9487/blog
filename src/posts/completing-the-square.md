@@ -2,7 +2,7 @@
 title: "The Quadratic Formula"
 description: "Some useful description of the method"
 date: '2024-03-13'
-user: 'jdev9487'
+user: "jdev9487"
 featuredAnimation: "completingTheSquare"
 ---
 
