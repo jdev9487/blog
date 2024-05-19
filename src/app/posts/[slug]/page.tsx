@@ -4,15 +4,11 @@ import remarkRehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
 import rehypeMathjax from 'rehype-mathjax'
 import remarkFrontmatter from 'remark-frontmatter'
-import {remark} from 'remark'
-import {read} from 'to-vfile'
+import { remark } from 'remark'
 import getPostsMetadata from '@/app/Components/getPostsMetadata'
 import getPostMetadata from '@/app/Components/getPostMetadata'
 
 const getPostContent = async (slug: string) => {
-    const folder = "./src/posts/";
-    const file = `${folder}${slug}.md`;
-
     const processor = remark()
         .use(remarkParse)
         .use(remarkMath)
@@ -21,15 +17,17 @@ const getPostContent = async (slug: string) => {
         .use(rehypeStringify)
         .use(remarkFrontmatter, ['yaml', 'toml'])
         .freeze();
-    
-    var readFile = await read(file);
-    const content = processor.processSync(readFile);
+
+    const res = await fetch(`http://localhost:8000/markdown/${slug}`)
+    const markdown = await res.text()
+
+    const content = processor.processSync(markdown);
 
     return content;
 }
 
 export const generateStaticParams = async () => {
-    const posts = getPostsMetadata();
+    const posts = await getPostsMetadata();
     return posts.map(p => ({
         slug: p.slug
     }));
@@ -38,14 +36,14 @@ export const generateStaticParams = async () => {
 const PostPage = async (props: any) => {
     const slug = props.params.slug;
     const remark = await getPostContent(slug);
-    const frontmatter = getPostMetadata(slug);
-    return(
+    const frontmatter = await getPostMetadata(slug);
+    return (
         <div>
             <h1 className="text-secondary text-6xl text-center my-16">
                 {frontmatter.title}
             </h1>
             <video muted playsInline autoPlay loop src={`/animations/${frontmatter.featuredAnimation}.mp4`} />
-            <div dangerouslySetInnerHTML={{ __html: remark.value }}/>
+            <div dangerouslySetInnerHTML={{ __html: remark.value }} />
         </div>
     )
 }

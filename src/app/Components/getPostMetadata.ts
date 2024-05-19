@@ -1,19 +1,10 @@
-import fs from "fs";
 import { PostMetadata } from "./postMetadata";
-import matter from 'gray-matter';
 
-const getPostMetadata = (slug: string): PostMetadata => {
-  const folder = "./src/posts/";
-  const file = `${folder}${slug}.md`;
-  const mtr = matter(fs.readFileSync(file))
-  return {
-    title: mtr.data.title,
-    date: mtr.data.date,
-    description: mtr.data.description,
-    slug: slug,
-    user: mtr.data.user,
-    featuredAnimation: mtr.data.featuredAnimation
-  }
+const getPostMetadata = async (slug: string): Promise<PostMetadata> => {
+  const res = await fetch(`http://localhost:8000/front-matter/${slug}`)
+  let mattersJson = JSON.stringify(await res.json())
+  let matters: PostMetadata = JSON.parse(mattersJson)
+  return matters
 }
 
 export default getPostMetadata;
