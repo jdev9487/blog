@@ -18,7 +18,7 @@ const getPostContent = async (slug: string) => {
         .use(remarkFrontmatter, ['yaml', 'toml'])
         .freeze();
 
-    const res = await fetch(`http://localhost:8000/markdown/${slug}`)
+    const res = await fetch(`${process.env.MARKDOWN_URL}/markdown/${slug}`)
     const markdown = await res.text()
 
     const content = processor.processSync(markdown);
@@ -42,7 +42,7 @@ const PostPage = async (props: any) => {
             <h1 className="text-secondary text-6xl text-center my-16">
                 {frontmatter.title}
             </h1>
-            <video muted playsInline autoPlay loop src={`/animations/${frontmatter.featuredAnimation}.mp4`} />
+            <video muted playsInline autoPlay loop src={`${process.env.ANIMATION_URL}/animations/${frontmatter.featuredAnimation}`} />
             <div dangerouslySetInnerHTML={{ __html: remark.value }} />
         </div>
     )

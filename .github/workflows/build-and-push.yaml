@@ -14,40 +14,6 @@ jobs:
         name: Checkout
         uses: actions/checkout@v4
       -
-        name: Download markdown
-        uses: robinraju/release-downloader@v1.9
-        with:
-          repository: jdev9487/blog-markdown
-          latest: true
-          filename: "*.md"
-          out-file-path: "markdown"
-      -
-        name: Delete dummy blogs
-        run: rm ./src/posts/*
-      -
-        name: Copy markdown
-        run: sh .github/scripts/copy-markdown-files.sh
-      -
-        name: Delete dummy avatars
-        run: rm ./public/avatars/*
-      -
-        name: Fetch user avatars
-        run: sh .github/scripts/fetch-user-avatars.sh
-      -
-        name: Download animations
-        uses: robinraju/release-downloader@v1.9
-        with:
-          repository: jdev9487/math-blog-animations
-          latest: true
-          filename: "*"
-          out-file-path: "animations"
-      -
-        name: Delete dummy animations
-        run: rm ./public/animations/*
-      -
-        name: Copy animations
-        run: sh .github/scripts/copy-animations.sh
-      -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       -

@@ -18,6 +18,7 @@ export default function RootLayout({
   const header = (
     <div>
       <div className="flex flex-row-reverse gap-8 my-2 ml-auto mr-8 max-w-4xl">
+        <p>{process.env.TEST}</p>
         <Link className="uppercase text-xs text-text-light" href="/">Contribute</Link>
         <Link className="uppercase text-xs text-text-light" href="/">About</Link>
         <Link className="uppercase text-xs text-text-light" href="/">Home</Link>
