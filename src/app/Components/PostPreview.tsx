@@ -11,7 +11,7 @@ const PostPreview = (props: PostMetadata) => {
             </div>
             <div className="flex flex-col basis-1/2 py-6 px-12">
                 <div className="flex flex-row items-center gap-2 pb-6 text-secondary">
-                    <Avatar src={`https://avatars.githubusercontent.com/${props.user}`} />
+                    <Avatar src={`${process.env.AVATARS_URL}/${props.user}`} />
                     <div>
                         <p className="text-xs font-thin mb-0">{props.user}</p>
                         <p className="text-xs font-thin mb-0">{props.date}</p>
