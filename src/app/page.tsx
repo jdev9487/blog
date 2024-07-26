@@ -1,11 +1,15 @@
-import getPostsMetadata from "./Components/getPostsMetadata";
+import { PostMetadata } from "./Components/postMetadata";
 import PostPreview from "./Components/PostPreview";
 
-const HomePage = async () => {
-  const posts = await getPostsMetadata();
+export default async function Page() {
+  const res = await fetch(`${process.env.MARKDOWN_URL}/front-matter`, {
+    cache: "no-store"
+  })
+  let mattersJson = JSON.stringify(await res.json())
+  let posts: PostMetadata[] = JSON.parse(mattersJson)
   const previews = posts.map(p => {
     return(
-      <PostPreview key={p.slug} {...p} />
+      <PostPreview key={p.slug} {...p}/>
     )
   })
   return (
@@ -14,5 +18,3 @@ const HomePage = async () => {
     </div>
   )
 }
-
-export default HomePage;

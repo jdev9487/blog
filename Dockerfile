@@ -1,27 +1,3 @@
-# FROM node:latest AS builder
-
-# WORKDIR /app
-
-# COPY . .
-
-# RUN npm install && npm run build
-
-
-# FROM nginx:alpine
-
-# WORKDIR /etc/nginx/conf.d
-
-# RUN rm -f default.conf
-
-# WORKDIR /usr/share/nginx/html
-
-# RUN rm -rf ./*
-
-# COPY --from=builder app/.next .
-
-# EXPOSE 443 80
-
-# ENTRYPOINT ["nginx", "-g", "daemon off;"]
 FROM node:18-alpine AS base
 
 # Install dependencies only when needed
@@ -35,6 +11,8 @@ RUN npm ci
 
 # Rebuild the source code only when needed
 FROM base AS builder
+ENV ANIMATION_URL http://localhost:5000
+ENV MARKDOWN_URL http://localhost:5001
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -54,7 +32,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-COPY --from=builder /app/public ./public
+# COPY --from=builder /app/public ./public
 
 # Set the correct permission for prerender cache
 RUN mkdir .next

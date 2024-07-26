@@ -3,11 +3,11 @@ import Avatar from '@mui/material/Avatar';
 import { PostMetadata } from "./postMetadata";
 import ShareIcon from '@mui/icons-material/Share';
 
-const PostPreview = (props: PostMetadata) => {
+export default function PostPreview(props: PostMetadata) {
     return (
         <div className="flex flex-row border border-background-secondary shadow min-h-80">
             <div className="flex basis-1/2">
-                <img className="object-cover" src={`${process.env.ANIMATION_URL}/thumbnails/${props.featuredAnimation}`} />
+                <img id="thumbnail" className="object-cover" src={`${process.env.ANIMATION_URL}/thumbnails/${props.featuredAnimation}`} />
             </div>
             <div className="flex flex-col basis-1/2 py-6 px-12">
                 <div className="flex flex-row items-center gap-2 pb-6 text-secondary">
@@ -31,5 +31,3 @@ const PostPreview = (props: PostMetadata) => {
         </div>
     )
 };
-
-export default PostPreview;

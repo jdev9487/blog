@@ -5,10 +5,9 @@ import rehypeStringify from 'rehype-stringify'
 import rehypeMathjax from 'rehype-mathjax'
 import remarkFrontmatter from 'remark-frontmatter'
 import { remark } from 'remark'
-import getPostsMetadata from '@/app/Components/getPostsMetadata'
 import getPostMetadata from '@/app/Components/getPostMetadata'
 
-const getPostContent = async (slug: string) => {
+const getPostContent = async (slug: string | null) => {
     const processor = remark()
         .use(remarkParse)
         .use(remarkMath)
@@ -20,23 +19,17 @@ const getPostContent = async (slug: string) => {
 
     const res = await fetch(`${process.env.MARKDOWN_URL}/markdown/${slug}`)
     const markdown = await res.text()
-
     const content = processor.processSync(markdown);
-
     return content;
 }
 
-export const generateStaticParams = async () => {
-    const posts = await getPostsMetadata();
-    return posts.map(p => ({
-        slug: p.slug
-    }));
-}
-
-const PostPage = async (props: any) => {
-    const slug = props.params.slug;
-    const remark = await getPostContent(slug);
-    const frontmatter = await getPostMetadata(slug);
+export default async function Page({
+    params
+    } : {
+        params: {slug: string}
+    }) {
+    const remark = await getPostContent(params.slug);
+    const frontmatter = await getPostMetadata(params.slug);
     return (
         <div>
             <h1 className="text-secondary text-6xl text-center my-16">
@@ -47,5 +40,3 @@ const PostPage = async (props: any) => {
         </div>
     )
 }
-
-export default PostPage;
