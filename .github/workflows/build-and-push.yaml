@@ -2,8 +2,8 @@ name: Build and Push to DockerHub
 
 on: 
   push:
-    tags:
-    - '*'
+    branches:
+      - main
 
 
 jobs:
@@ -13,6 +13,10 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v4
+      -
+        name: Read version file
+        id: dotenv
+        uses: falti/dotenv-action@v1.1.4
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -31,11 +35,11 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog:${{ steps.dotenv.outputs.version }}
       -
         name: Build and push nginx
         uses: docker/build-push-action@v5
         with:
           context: ./.nginx
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog-proxy-server:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog-proxy-server:${{ steps.dotenv.outputs.version }}
