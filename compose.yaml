@@ -7,9 +7,10 @@ services:
     environment:
       - ANIMATION_URL=/animation
       - MARKDOWN_URL=http://markdown-app:5000
+      - IN_DEPTH_URL=/in-depth
       - AVATARS_URL=https://avatars.githubusercontent.com
   nginx:
-    image: jdev9487/blog-proxy-server:latest
+    image: jdev9487/blog-proxy-server:3.1.0
     depends_on:
       - blog-app
     ports:
@@ -18,10 +19,14 @@ services:
     volumes:
       - ./.nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
   animation-app:
-    image: jdev9487/math-blog-animations:latest
+    image: jdev9487/math-blog-animations:2.4.0
     ports:
       - '8001:5000'
   markdown-app:
-    image: jdev9487/blog-markdown:latest
+    image: jdev9487/blog-markdown:2.3.0
     ports:
       - '8000:5000'
+  in-depth-app:
+    image: jdev9487/in-depth:0.2.0
+    ports:
+      - '8002:5000'
