@@ -7,10 +7,14 @@ services:
     environment:
       - ANIMATION_URL=/animation
       - MARKDOWN_URL=http://markdown-app:5000
-      - IN_DEPTH_URL=/in-depth
+      - IN_DEPTH_URL=http://in-depth-app:5000
+      - IN_DEPTH_URL_CLIENT=/api.in-depth
       - AVATARS_URL=https://avatars.githubusercontent.com
   nginx:
-    image: jdev9487/blog-proxy-server:3.1.0
+    build:
+      context: ./.nginx
+      dockerfile: Dockerfile
+    # image: jdev9487/blog-proxy-server:3.1.0
     depends_on:
       - blog-app
     ports:
