@@ -1,9 +1,10 @@
 version: '3.8'
 services:
   blog-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    image: jdev9487/blog:3.2.0
     environment:
       - ANIMATION_URL=/animation
       - MARKDOWN_URL=http://markdown-app:5000
@@ -11,10 +12,10 @@ services:
       - IN_DEPTH_URL_CLIENT=/api.in-depth
       - AVATARS_URL=https://avatars.githubusercontent.com
   nginx:
-    build:
-      context: ./.nginx
-      dockerfile: Dockerfile
-    # image: jdev9487/blog-proxy-server:3.1.0
+    # build:
+      # context: ./.nginx
+      # dockerfile: Dockerfile
+    image: jdev9487/blog-proxy-server:3.2.0
     depends_on:
       - blog-app
     ports:
