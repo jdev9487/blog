@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
+import { Typography } from "@mui/material";
 
 export const metadata: Metadata = {
   title: "Mathemagix",
@@ -15,19 +16,24 @@ export default function RootLayout({
   const header = (
     <div>
       <div className="flex flex-row-reverse gap-8 my-2 ml-auto mr-8 max-w-4xl">
-        <p>{process.env.TEST}</p>
         <Link className="uppercase text-xs text-text-light" href="/">Contribute</Link>
-        <Link className="uppercase text-xs text-text-light" href="/">About</Link>
         <Link className="uppercase text-xs text-text-light" href="/">Home</Link>
       </div>
-      <header className="bg-background-secondary p-8">
+      <header className="bg-background-secondary pt-8 pb-2">
         <div className="mx-auto max-w-4xl">
           <h1 className="text-main">
             <p className="text-4xl">Mathemagix</p>
           </h1>
-          <p className="text-text-light">
-            A collection of useful and useless mathematical explainers
-          </p>
+        </div>
+      </header>
+      <header>
+        <div className="flex flex-row gap-8 my-2 mx-auto max-w-4xl">
+          <Link className="uppercase text-xs text-text-light" href="/posts">
+            <Typography>Animations</Typography>
+          </Link>
+          <Link className="uppercase text-xs text-text-light" href="/in-depth">
+            <Typography>In-depth</Typography>
+          </Link>
         </div>
       </header>
     </div>
